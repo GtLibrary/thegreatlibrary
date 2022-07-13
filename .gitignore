@@ -18,3 +18,4 @@ __pycache__
 /.vagrant/
 /Vagrantfile.local
 !.gitignore
+/node_modules
