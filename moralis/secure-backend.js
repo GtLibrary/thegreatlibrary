@@ -128,7 +128,10 @@ function runServer(passPhrase) {
         		var contractid;		// This will be the real contract when the tx completes.
 			await newBookContractWithLockFile(whoFile, _name, _symbol, _bookRegistryAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo, cCAPrivateKey);
 			res.end();
+		} else {
+			res.end();
 		}
+
 	
   		//res.end();
 	});
