@@ -1,5 +1,5 @@
 const bookRegistryAddress = "0x17a3D635284c100ea39f2Eb294AeB40CC87f3c23";
-const cultureCoinAddress = "0x59932D1B061b3CFFF3591d0571841CAB4393b0Ff";
+const cultureCoinAddress = "0x0235F1C524AA396F72E0bE939263Ef95244fC029";
 const printingPressAddress = "0xf2dF33307A3f8207C7471f5E394a868a544ff849";
 const daedalusClassBoosterAddress = "0x47332328173546c25dfe30f1f4f50d49cc5c369a";
 const theGoldenKeysAddress = "0x03CCdAA389e6B0673C0f5A8498412dcC925c2870";

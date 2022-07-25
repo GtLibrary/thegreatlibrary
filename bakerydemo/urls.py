@@ -58,17 +58,13 @@ urlpatterns = [
     ### FOR REACT ###
     path('api/', include('bakerydemo.mobileapp.urls')),
 	url(r'^api/art/$', frontendapi_views.art),
-	# url(r'^api/home', frontendapi_views.home),
 	# url(r'^api/getproducts', frontendapi_views.home),
+	# url(r'^api/home', frontendapi_views.home),
 	# url(r'^api/mobileapp/(?P<pk>[0-9]+)$', views.mobileapp_detail),
     #path('home/', include('bakerydemo.frontend.urls')),
 
-    # url(r'^getData/', frontend_views.get_data),
+    url(r'^getData/', frontend_views.get_data),
     url(r'mobileapp', TemplateView.as_view(template_name="mobilehome.html"), name="mobilehome"),
-
-
-
-
 
     #url(r'^froala_editor/', include('froala_editor.urls')),
 
