@@ -5,7 +5,7 @@ All our code is open source:
 1. Code for a django website
 2. Code for creating smart html/html5.3
 3. Code for creating and managing tokens on the backend
-4. Unity code for the game
+4. Unity code for [the game](https://thegreatlibrary.vercel.app/).
 5. A new react frontend
 5. All the best Guilds, Guides, and Goblins -- the numbers approved version of every game and franchies under the sun
 
@@ -426,8 +426,11 @@ brownie run scripts/deployDummy.py  --network avax-test
 ## DEPLOY CULTURE COIN, etc
 ```
 brownie run scripts/deployCultureCoinProxyAdmin.py  --network=avax-test     ## add address as proxyAdmin
-brownie run scripts/deployCultureCoin.py  --network=avax-test               ## add the contract addrss to the .env as cultureCoinAddressImpl
-brownie run scripts/deployCultureCoinProxy.py  --network=avax-test          ## cultureCoinAddress
+
+brownie run scripts/deployCultureCoin.py  --network=avax-test               ## add the contract addrss to the 
+                                                                            ## .env as cultureCoinAddressImpl
+                                                                            
+brownie run scripts/deployCultureCoinProxy.py  --network=avax-test          ## cultureCoinAddress=""  
 
 brownie run scripts/deployMarketPlace.py  --network=avax-test
 brownie run scripts/deployPrintingPress.py --network=avax-test
