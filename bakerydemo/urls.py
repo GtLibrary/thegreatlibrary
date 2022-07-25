@@ -66,9 +66,6 @@ urlpatterns = [
     url(r'^getData/', frontend_views.get_data),
     url(r'mobileapp', TemplateView.as_view(template_name="mobilehome.html"), name="mobilehome"),
 
-    #url(r'^froala_editor/', include('froala_editor.urls')),
-
-
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
