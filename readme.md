@@ -5,7 +5,7 @@ All our code is open source:
 1. Code for a django website
 2. Code for creating smart html/html5.3
 3. Code for creating and managing tokens on the backend
-4. Unity code for the game
+4. Unity code for [the game](https://thegreatlibrary.vercel.app/).
 5. A new react frontend
 5. All the best Guilds, Guides, and Goblins -- the numbers approved version of every game and franchies under the sun
 
