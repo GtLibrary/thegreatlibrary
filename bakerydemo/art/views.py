@@ -77,7 +77,7 @@ def get_serials(curserial_num, potential = None):
     serial = []
     for i in range(int(my_curserial_num)):
         #print("get_serials says::: i: " + str(i))
-        serial.append(' class=ss title=' + str(i) + ' name=serial.' + str(i)  + ' onmouseover=s(this)')
+        serial.append(' class=ss title=' + str(i) + ' name=serial.' + str(i)) # + ' onmouseover=s(this)'
 
     context = {
         'serial': serial,

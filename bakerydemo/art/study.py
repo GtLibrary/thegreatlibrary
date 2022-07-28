@@ -43,6 +43,7 @@ class Study:
         entitymagic = NOTSTARTED
 
         byte = htmlfile.read(1)
+        
         while byte:
             char = ''
 
@@ -55,12 +56,14 @@ class Study:
     
                 tokencount += 1
                 intag = True
+                # print("___________________________")
 
             elif byte == b'>':
                 char = '>'
                 tokencount += 1
                 intag = False
                 starttextmagic = START
+                # print("+++++++++++++++++++++++++++")
     
             else:  # The byte/char is a non <> char. 
                 tokencount += 1
@@ -117,10 +120,11 @@ class Study:
                             spancount += 1
                         else:
                             pass
+
+                        if serial == self.serial:
+                            break
                 else: # We are inside a tag, leave it alone.
                     char = byte.decode("utf-8", 'ignore')
-        
-
 
             #sys.stdout.buffer.write(byte)
             if byte:
@@ -130,14 +134,13 @@ class Study:
             byte = htmlfile.read(1)
 
 
+        outstring.append("</span></p>")
         outstring.append("\n\n<!-- " + str(tokencount) + " tokens  -->")
         outstring.append("<!-- " + str(textcount) + " text tokens -->")
         if textcount == 0:
             return "nothing here but a beta bug in JRREditor txtct-" + str(textcount)
 
         outstring.append("<!-- " + str(stoppoint) + " is " + str(int(stoppoint/textcount*100)) + "% of the way done. -->")
-
-        #print(choicetext)
 
         return ("".join(outstring).replace("<JRRE-NBSP>", "&nbsp;"), "".join(choicetext), textcount)
 
@@ -157,7 +160,6 @@ class Study:
         htmlfile.close()
 
         print("nftdir: " + nftdir)
-        print(outstring.encode())
 
         nftfile = open(nftdir + "/choicetext."+ str(serial), "w")
         nftfile.write(choicetext)

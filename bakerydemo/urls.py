@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 
 from django.conf.urls import url
 
@@ -65,6 +65,11 @@ urlpatterns = [
 
     url(r'^getData/', frontend_views.get_data),
     url(r'mobileapp', TemplateView.as_view(template_name="mobilehome.html"), name="mobilehome"),
+
+    #url(r'^froala_editor/', include('froala_editor.urls')),
+
+    # Ensure that the api_router line appears above the default Wagtail page serving route
+    re_path(r'^', include(wagtail_urls)),
 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
