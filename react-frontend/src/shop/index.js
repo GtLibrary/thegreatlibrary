@@ -41,10 +41,10 @@ const SHOP_DATA = [
   },
   {
     id: 6,
-    author: 'John R. Raymond',
+    author: 'Lawrence Stanley',
     title: 'Stubborn Attachments',
     description: 'Cowen’s latest book, at its heart, makes the contemporary moral case for economic growth and in doing so engenders a great dose of inspiration and optimism about our future possibilities.',
-    imageUrl: 'https://press.stripe.com/img/v3/books/covers/sa.jpg',
+    imageUrl: 'assets/img/frsts.jpg',
     price: 28,
   },
   {

@@ -38,6 +38,17 @@
     overflow: auto;
     padding: 20px;
     // background-image: url("/art/paper.jpg");
+    background-size: 200% 200%;
+    background-image: linear-gradient(
+            -45deg, 
+	    rgba(230,235,215,1) 0%,
+            rgba(250,235,225,1) 25%, 
+            rgba(250,230,225,1) 51%, 
+            rgba(255,215,100,1) 100%
+	        
+      );  
+    animation: AnimateBG 20s ease infinite;
+
     background-color: antiquewhite;
   }
   .pdf-maincontent img{
@@ -55,4 +66,11 @@
     color: white;
     transition: 0.1s;
   }
+}
+
+
+@keyframes AnimateBG { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
