@@ -1,0 +1,90 @@
+{
+  "contracts": {
+    "BEN": "b23e53f334a13d86512f7927f44ec05e1fb16c36",
+    "BaseLoot": "4dee493ab640e7737b33acd932602c3ec152f68e",
+    "BaseSpells": "cc4b97d225ed1a44d8b662c3959715e28ab58686",
+    "BookRegistry": "608638f6acaec91c90ff89e3cf3ab07429b3672a",
+    "BookTradable": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "CultureCoin": "33cd9081c38c3d81d7f29cb0b44c4fc379db0cbb",
+    "CultureCoinV1M0m1": "33cd9081c38c3d81d7f29cb0b44c4fc379db0cbb",
+    "CultureCoinWrapper": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "DummyContract": "d04049482c6a13db88c7548556735eee723b53a7",
+    "EIP712Base": "46219b509d0776cbacaab6c85d9c99eda157d376",
+    "FutureCoin": "7533f8b438fcfb8c798fa930db7c98f5f5a3def3",
+    "GamblersUnionBEN": "f664003dbcce9c0a2a7bd9533222a078137bc50a",
+    "Hero": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "Initializable": "85f5ce2ec844c5bf94d782d6c82736c53ab090ca",
+    "MarketPlace": "b5e137b8712af374a54053d0a4c7be0e755a4b04",
+    "MumbaiStampFactoryMarketPlace": "73df0a6f5d0123eb2b2db0faf62b602aa77c123a",
+    "MyItems": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "NativeMetaTransaction": "ca23f3aa73c23895458bc2f72695a6b78a1b0b55",
+    "OwnableDelegateBook": "73df0a6f5d0123eb2b2db0faf62b602aa77c123a",
+    "OwnableDelegateProxy": "73df0a6f5d0123eb2b2db0faf62b602aa77c123a",
+    "PrintingPress": "9c05635b64746fb14b871d812362457af47aac9d",
+    "ProxyAdmin": "08b625fbdc5fe9e031bdf38f4c9ed9e37ce50d59",
+    "ProxyRegistry": "608638f6acaec91c90ff89e3cf3ab07429b3672a",
+    "TheGoldenKeys": "433d790e7e6ef6d4e70442d2eb9ac98abd7c4ea7",
+    "TimeCube": "dfc380bc10cbe6d49bffc0f1fbd2ee03c5b65282",
+    "Transalation": "c0ca2cd9fc6a7ba66946f6949fce875edc38598d",
+    "TransparentUpgradeableProxy": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "tests": {
+    "tests/allHeros.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": ".",
+      "sha1": "b0857ceaf8409dd37db1af8836673e66f650c17d",
+      "txhash": []
+    },
+    "tests/greatLibrary.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "FF...",
+      "sha1": "3fe353e4ff7cb05266c3e04798e88a3a931e6d46",
+      "txhash": []
+    },
+    "tests/scene1.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "F",
+      "sha1": "18a98d1452c8f2e1cc8f60357d79e36554dc8a9a",
+      "txhash": []
+    },
+    "tests/test1.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": ".......",
+      "sha1": "70e8d5c21b010253e70ed8eb290de9289ded6ea3",
+      "txhash": []
+    },
+    "tests/test2.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "FEF..",
+      "sha1": "3fe353e4ff7cb05266c3e04798e88a3a931e6d46",
+      "txhash": []
+    },
+    "tests/timeCube.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "E",
+      "sha1": "e6ada2195c27fbaf5346c545a2cd7b6b0942b649",
+      "txhash": []
+    },
+    "tests/timeCubeMove.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "E",
+      "sha1": "a9d0274c07b473243cf0bcac9cdd3b83ba31961c",
+      "txhash": []
+    },
+    "tests/timeCubeSpells.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "E",
+      "sha1": "b3c5c2a489debe4557598af1374885d298b3b4ab",
+      "txhash": []
+    }
+  },
+  "tx": {}
+}

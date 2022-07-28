@@ -1,0 +1,664 @@
+{
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "ids",
+          "type": "uint256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "values",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "TransferBatch",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "TransferSingle",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "URI",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "addonPay",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "accounts",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "ids",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "balanceOfBatch",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "ids",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "values",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "burnBatch",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "isApprovedForAll",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "ids",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "amounts",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeBatchTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprovalForAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "uri",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "1": "contracts/Base.sol",
+    "30": "contracts/send_receive.sol",
+    "31": "openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol",
+    "32": "openzeppelin-contracts-upgradeable/contracts/security/ReentrancyGuardUpgradeable.sol",
+    "33": "openzeppelin-contracts-upgradeable/contracts/token/ERC1155/ERC1155Upgradeable.sol",
+    "35": "openzeppelin-contracts-upgradeable/contracts/token/ERC1155/IERC1155Upgradeable.sol",
+    "36": "openzeppelin-contracts-upgradeable/contracts/token/ERC1155/extensions/ERC1155BurnableUpgradeable.sol",
+    "37": "openzeppelin-contracts-upgradeable/contracts/token/ERC1155/extensions/IERC1155MetadataURIUpgradeable.sol",
+    "43": "openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol",
+    "44": "openzeppelin-contracts-upgradeable/contracts/utils/introspection/ERC165Upgradeable.sol",
+    "45": "openzeppelin-contracts-upgradeable/contracts/utils/introspection/IERC165Upgradeable.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/Base.sol",
+    "exportedSymbols": {
+      "AddressUpgradeable": [
+        23464
+      ],
+      "Base": [
+        363
+      ],
+      "ContextUpgradeable": [
+        23684
+      ],
+      "ERC1155BurnableUpgradeable": [
+        19430
+      ],
+      "ERC1155Upgradeable": [
+        19341
+      ],
+      "ERC165Upgradeable": [
+        23728
+      ],
+      "IERC1155MetadataURIUpgradeable": [
+        23642
+      ],
+      "IERC1155ReceiverUpgradeable": [
+        23505
+      ],
+      "IERC1155Upgradeable": [
+        23627
+      ],
+      "IERC165Upgradeable": [
+        24806
+      ],
+      "Initializable": [
+        18037
+      ],
+      "Receiver": [
+        17923
+      ],
+      "ReentrancyGuardUpgradeable": [
+        18096
+      ]
+    },
+    "id": 364,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 347,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "47:23:1"
+      },
+      {
+        "absolutePath": "openzeppelin-contracts-upgradeable/contracts/token/ERC1155/extensions/ERC1155BurnableUpgradeable.sol",
+        "file": "../openzeppelin-contracts-upgradeable/contracts/token/ERC1155/extensions/ERC1155BurnableUpgradeable.sol",
+        "id": 348,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 364,
+        "sourceUnit": 19431,
+        "src": "72:113:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-contracts-upgradeable/contracts/token/ERC1155/ERC1155Upgradeable.sol",
+        "file": "../openzeppelin-contracts-upgradeable/contracts/token/ERC1155/ERC1155Upgradeable.sol",
+        "id": 349,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 364,
+        "sourceUnit": 19342,
+        "src": "186:94:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-contracts-upgradeable/contracts/security/ReentrancyGuardUpgradeable.sol",
+        "file": "../openzeppelin-contracts-upgradeable/contracts/security/ReentrancyGuardUpgradeable.sol",
+        "id": 350,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 364,
+        "sourceUnit": 18097,
+        "src": "281:97:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol",
+        "file": "../openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol",
+        "id": 351,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 364,
+        "sourceUnit": 18038,
+        "src": "379:87:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "contracts/send_receive.sol",
+        "file": "./send_receive.sol",
+        "id": 352,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 364,
+        "sourceUnit": 17924,
+        "src": "468:28:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 353,
+              "name": "Initializable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 18037,
+              "src": "624:13:1"
+            },
+            "id": 354,
+            "nodeType": "InheritanceSpecifier",
+            "src": "624:13:1"
+          },
+          {
+            "baseName": {
+              "id": 355,
+              "name": "ERC1155Upgradeable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 19341,
+              "src": "639:18:1"
+            },
+            "id": 356,
+            "nodeType": "InheritanceSpecifier",
+            "src": "639:18:1"
+          },
+          {
+            "baseName": {
+              "id": 357,
+              "name": "ERC1155BurnableUpgradeable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 19430,
+              "src": "659:26:1"
+            },
+            "id": 358,
+            "nodeType": "InheritanceSpecifier",
+            "src": "659:26:1"
+          },
+          {
+            "baseName": {
+              "id": 359,
+              "name": "ReentrancyGuardUpgradeable",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 18096,
+              "src": "687:26:1"
+            },
+            "id": 360,
+            "nodeType": "InheritanceSpecifier",
+            "src": "687:26:1"
+          },
+          {
+            "baseName": {
+              "id": 361,
+              "name": "Receiver",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 17923,
+              "src": "715:8:1"
+            },
+            "id": 362,
+            "nodeType": "InheritanceSpecifier",
+            "src": "715:8:1"
+          }
+        ],
+        "canonicalName": "Base",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 363,
+        "linearizedBaseContracts": [
+          363,
+          17923,
+          18096,
+          19430,
+          19341,
+          23642,
+          23627,
+          23728,
+          24806,
+          23684,
+          18037
+        ],
+        "name": "Base",
+        "nameLocation": "616:4:1",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 364,
+        "src": "598:130:1",
+        "usedErrors": []
+      }
+    ],
+    "src": "47:683:1"
+  },
+  "bytecode": "",
+  "bytecodeSha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 100
+    },
+    "version": "0.8.14+commit.80d49f37"
+  },
+  "contractName": "Base",
+  "coverageMap": {
+    "branches": {},
+    "statements": {}
+  },
+  "dependencies": [
+    "ContextUpgradeable",
+    "ERC1155BurnableUpgradeable",
+    "ERC1155Upgradeable",
+    "ERC165Upgradeable",
+    "IERC1155MetadataURIUpgradeable",
+    "IERC1155Upgradeable",
+    "IERC165Upgradeable",
+    "Initializable",
+    "Receiver",
+    "ReentrancyGuardUpgradeable"
+  ],
+  "deployedBytecode": "",
+  "deployedSourceMap": "",
+  "language": "Solidity",
+  "natspec": {
+    "kind": "dev",
+    "methods": {
+      "balanceOf(address,uint256)": {
+        "details": "See {IERC1155-balanceOf}. Requirements: - `account` cannot be the zero address."
+      },
+      "balanceOfBatch(address[],uint256[])": {
+        "details": "See {IERC1155-balanceOfBatch}. Requirements: - `accounts` and `ids` must have the same length."
+      },
+      "isApprovedForAll(address,address)": {
+        "details": "See {IERC1155-isApprovedForAll}."
+      },
+      "safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)": {
+        "details": "See {IERC1155-safeBatchTransferFrom}."
+      },
+      "safeTransferFrom(address,address,uint256,uint256,bytes)": {
+        "details": "See {IERC1155-safeTransferFrom}."
+      },
+      "setApprovalForAll(address,bool)": {
+        "details": "See {IERC1155-setApprovalForAll}."
+      },
+      "supportsInterface(bytes4)": {
+        "details": "See {IERC165-supportsInterface}."
+      },
+      "uri(uint256)": {
+        "details": "See {IERC1155MetadataURI-uri}. This implementation returns the same URI for *all* token types. It relies on the token type ID substitution mechanism https://eips.ethereum.org/EIPS/eip-1155#metadata[defined in the EIP]. Clients calling this function must replace the `\\{id\\}` substring with the actual token type ID."
+      }
+    },
+    "version": 1
+  },
+  "offset": [
+    598,
+    728
+  ],
+  "opcodes": "",
+  "pcMap": {},
+  "sha1": "38d4cf17bf0a2b4259c368f37a8f54b34c92bbc5",
+  "source": "// SPDX-License-Identifier:        UNLICENSED\n\npragma solidity ^0.8.0;\n\nimport \"../openzeppelin-contracts-upgradeable/contracts/token/ERC1155/extensions/ERC1155BurnableUpgradeable.sol\";\nimport \"../openzeppelin-contracts-upgradeable/contracts/token/ERC1155/ERC1155Upgradeable.sol\";\nimport \"../openzeppelin-contracts-upgradeable/contracts/security/ReentrancyGuardUpgradeable.sol\";\nimport \"../openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol\";\n\nimport \"./send_receive.sol\"; // For the addons to send and receive XMTSP, AKA AVAX.\n\n/* arcaneOrb = 1\n * ironSkin = 2\n *\n *\n */\n\n\nabstract contract Base is Initializable, ERC1155Upgradeable, ERC1155BurnableUpgradeable, ReentrancyGuardUpgradeable, Receiver {\n\n}\n\n",
+  "sourceMap": "",
+  "sourcePath": "contracts/Base.sol",
+  "type": "contract"
+}

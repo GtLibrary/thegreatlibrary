@@ -6,10 +6,8 @@
 .env
 .idea
 .vscode
-*~
 /logs
 /data
-.~*
 common/CACHE
 bakerydemo/settings/local.py
 bakerydemodb

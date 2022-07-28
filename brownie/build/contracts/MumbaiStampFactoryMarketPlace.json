@@ -1,0 +1,271 @@
+{
+  "abi": [],
+  "allSourcePaths": {
+    "4": "contracts/MumbaiStampFactory.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/MumbaiStampFactory.sol",
+    "exportedSymbols": {
+      "Address": [
+        7814
+      ],
+      "AddressUpgradeable": [
+        8625
+      ],
+      "BookRegistry": [
+        3501
+      ],
+      "BookTradable": [
+        2244
+      ],
+      "Context": [
+        8909
+      ],
+      "ContextMixin": [
+        5538
+      ],
+      "ContextUpgradeable": [
+        8770
+      ],
+      "CultureCoin": [
+        3437
+      ],
+      "CultureCoinWrapper": [
+        4348
+      ],
+      "EIP712Base": [
+        8886
+      ],
+      "ERC165": [
+        9094
+      ],
+      "ERC20": [
+        8321
+      ],
+      "ERC20Burnable": [
+        8382
+      ],
+      "ERC20BurnableUpgradeable": [
+        5497
+      ],
+      "ERC20Upgradeable": [
+        5433
+      ],
+      "ERC721": [
+        6665
+      ],
+      "ERC721BookTradable": [
+        3685
+      ],
+      "ERC721Enumerable": [
+        7003
+      ],
+      "IERC165": [
+        9182
+      ],
+      "IERC20": [
+        3763
+      ],
+      "IERC20Metadata": [
+        9150
+      ],
+      "IERC20MetadataUpgradeable": [
+        8728
+      ],
+      "IERC20Upgradeable": [
+        8703
+      ],
+      "IERC721": [
+        9025
+      ],
+      "IERC721Enumerable": [
+        9125
+      ],
+      "IERC721Metadata": [
+        9070
+      ],
+      "IERC721Receiver": [
+        9043
+      ],
+      "Initializable": [
+        4763
+      ],
+      "MumbaiStampFactoryMarketPlace": [
+        3
+      ],
+      "NativeMetaTransaction": [
+        5737
+      ],
+      "Ownable": [
+        5847
+      ],
+      "OwnableDelegateBook": [
+        3495
+      ],
+      "Receiver": [
+        3444
+      ],
+      "ReentrancyGuard": [
+        3484
+      ],
+      "ReentrancyGuardUpgradeable": [
+        4822
+      ],
+      "SafeERC20": [
+        3987
+      ],
+      "SafeMath": [
+        7518
+      ],
+      "Stakeable": [
+        4689
+      ],
+      "Strings": [
+        7206
+      ]
+    },
+    "id": 4,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".9"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:22:4"
+      },
+      {
+        "absolutePath": "contracts/BookTradable.sol",
+        "file": "./BookTradable.sol",
+        "id": 2,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 4,
+        "sourceUnit": 2245,
+        "src": "56:28:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "MumbaiStampFactoryMarketPlace",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 3,
+        "linearizedBaseContracts": [
+          3
+        ],
+        "name": "MumbaiStampFactoryMarketPlace",
+        "nameLocation": "96:29:4",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 4,
+        "src": "87:4740:4",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:4796:4"
+  },
+  "bytecode": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122061a58580e32b2feea582a260ccdb52980124ed31b8f9c4a7f58c5c94465b177d64736f6c63430008090033",
+  "bytecodeSha1": "73df0a6f5d0123eb2b2db0faf62b602aa77c123a",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 100
+    },
+    "version": "0.8.9+commit.e5eed63a"
+  },
+  "contractName": "MumbaiStampFactoryMarketPlace",
+  "coverageMap": {
+    "branches": {
+      "4": {}
+    },
+    "statements": {
+      "4": {}
+    }
+  },
+  "dependencies": [],
+  "deployedBytecode": "6080604052600080fdfea264697066735822122061a58580e32b2feea582a260ccdb52980124ed31b8f9c4a7f58c5c94465b177d64736f6c63430008090033",
+  "deployedSourceMap": "87:4740:4:-:0;;;;;",
+  "language": "Solidity",
+  "natspec": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "offset": [
+    87,
+    4827
+  ],
+  "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 PUSH2 0xA585 DUP1 0xE3 0x2B 0x2F 0xEE 0xA5 DUP3 LOG2 PUSH1 0xCC 0xDB MSTORE SWAP9 ADD 0x24 0xED BALANCE 0xB8 0xF9 0xC4 0xA7 CREATE2 DUP13 0x5C SWAP5 CHAINID JUMPDEST OR PUSH30 0x64736F6C6343000809003300000000000000000000000000000000000000 ",
+  "pcMap": {
+    "0": {
+      "offset": [
+        87,
+        4827
+      ],
+      "op": "PUSH1",
+      "path": "4",
+      "value": "0x80"
+    },
+    "2": {
+      "fn": null,
+      "offset": [
+        87,
+        4827
+      ],
+      "op": "PUSH1",
+      "path": "4",
+      "value": "0x40"
+    },
+    "4": {
+      "fn": null,
+      "offset": [
+        87,
+        4827
+      ],
+      "op": "MSTORE",
+      "path": "4"
+    },
+    "5": {
+      "fn": null,
+      "offset": [
+        87,
+        4827
+      ],
+      "op": "PUSH1",
+      "path": "4",
+      "value": "0x0"
+    },
+    "7": {
+      "fn": null,
+      "offset": [
+        87,
+        4827
+      ],
+      "op": "DUP1",
+      "path": "4"
+    },
+    "8": {
+      "fn": null,
+      "offset": [
+        87,
+        4827
+      ],
+      "op": "REVERT",
+      "path": "4"
+    }
+  },
+  "sha1": "848548454e64f83ae04df6444230855232c8124e",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.9;\n\nimport \"./BookTradable.sol\";\n\n\ncontract MumbaiStampFactoryMarketPlace{\n/*\n    event OfferingPlaced(bytes32 indexed offeringId, address indexed hostContract, address indexed offerer, uint tokenId, uint price, string uri);\n    event OfferingClosed(bytes32 indexed offeringId, address indexed buyer);\n    event BalanceWithdrawn (address indexed beneficiary, uint amount);\n    event OperatorChanged (address previousOperator, address newOperator);\n\n    address operator;\n    uint256 private operatorFee;\n\n    uint offeringNonce;\n\n    struct offering {\n        address offerer;\n        address hostContract;\n        uint tokenId;\n        uint price;\n        bool closed; \n    }\n    \n    mapping (bytes32 => offering) offeringRegistry;\n    mapping (address => uint) balances;\n\n    constructor (address _operator) {\n        operator = _operator;\n        operatorFee = 1;  // 1% is the default.\n    }\n\n\n    function placeOfferingOperator (address _offerer, address _hostContract, uint _tokenId, uint _price) external returns(bytes32) {\n        require (msg.sender == operator, \"Only operator dApp can create offerings this way\");\n        bytes32 offeringId = keccak256(abi.encodePacked(offeringNonce, _hostContract, _tokenId));\n        offeringRegistry[offeringId].offerer = _offerer;\n        offeringRegistry[offeringId].hostContract = _hostContract;\n        offeringRegistry[offeringId].tokenId = _tokenId;\n        offeringRegistry[offeringId].price = _price;\n        offeringNonce += 1;\n        BookTradable hostContract = BookTradable(offeringRegistry[offeringId].hostContract);\n        string memory uri = hostContract.tokenURI(_tokenId);\n\n        emit OfferingPlaced(offeringId, _hostContract, _offerer, _tokenId, _price, uri);\n\treturn offeringId;\n    }\n\n    function setFee(uint256 _fee) external {\n    \trequire(msg.sender == operator, \"Only the operator may change the fee for the marketplace.\");\n\n\toperatorFee = _fee;\n    }\n\n\n    function placeOffering (address _hostContract, uint _tokenId, uint _price) external returns(bytes32) {\n        BookTradable hostContract = BookTradable(_hostContract);\n\taddress owner = hostContract.ownerOf(_tokenId);\n\n\trequire(msg.sender == owner, \"Caller does not own token\");\n\n        bytes32 offeringId = keccak256(abi.encodePacked(offeringNonce, _hostContract, _tokenId));\n        offeringRegistry[offeringId].offerer = owner;\n        offeringRegistry[offeringId].hostContract = _hostContract;\n        offeringRegistry[offeringId].tokenId = _tokenId;\n        offeringRegistry[offeringId].price = _price;\n        offeringNonce += 1;\n        string memory uri = hostContract.tokenURI(_tokenId);\n\n        emit OfferingPlaced(offeringId, _hostContract, owner, _tokenId, _price, uri);\n\treturn offeringId;\n    }\n    \n    function closeOfferingRoyalty(bytes32 _offeringId) external payable {\n        require(msg.value >= offeringRegistry[_offeringId].price, \"Not enough funds to buy\");\n        require(offeringRegistry[_offeringId].closed != true, \"Offering is closed\");\n        BookTradable hostContract = BookTradable(offeringRegistry[_offeringId].hostContract);\n        hostContract.safeTransferFromRegistry(offeringRegistry[_offeringId].offerer, msg.sender, offeringRegistry[_offeringId].tokenId);\n        offeringRegistry[_offeringId].closed = true;\n\n\tuint256 ownerFee = hostContract.getRoyalty();\n\n\tuint256 operatorCut = (msg.value * operatorFee) / 100; \t\t// Divide to make it a percent.\n\tuint256 royalties = (msg.value * ownerFee) / 100; \t\t// Divide to make it a percent.\n\n        balances[offeringRegistry[_offeringId].offerer] += msg.value - royalties - operatorCut;\n        balances[operator] += operatorCut;\n        balances[hostContract.owner()] += royalties;\n\n        emit OfferingClosed(_offeringId, msg.sender);\n    } \n\n    function withdrawBalance() external {\n        require(balances[msg.sender] > 0,\"You don't have any balance to withdraw\");\n        uint amount = balances[msg.sender];\n        payable(msg.sender).transfer(amount);\n        balances[msg.sender] = 0;\n        emit BalanceWithdrawn(msg.sender, amount);\n    }\n\n    function changeOperator(address _newOperator) external {\n        require(msg.sender == operator,\"only the operator can change the current operator\");\n        address previousOperator = operator;\n        operator = msg.sender;\n        emit OperatorChanged(previousOperator, operator);\n    }\n\n    function viewOfferingNFT(bytes32 _offeringId) external view returns (address, uint, uint, bool){\n        return (offeringRegistry[_offeringId].hostContract, offeringRegistry[_offeringId].tokenId, offeringRegistry[_offeringId].price, offeringRegistry[_offeringId].closed);\n    }\n\n    function viewBalances(address _address) external view returns (uint) {\n        return (balances[_address]);\n    }\n*/\n}\n",
+  "sourceMap": "87:4740:4:-:0;;;;;;;;;;;;;;;;;;;",
+  "sourcePath": "contracts/MumbaiStampFactory.sol",
+  "type": "contract"
+}

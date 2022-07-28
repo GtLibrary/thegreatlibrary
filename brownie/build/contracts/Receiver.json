@@ -1,0 +1,127 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "addonPay",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "12": "contracts/send_receive.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/send_receive.sol",
+    "exportedSymbols": {
+      "Receiver": [
+        3444
+      ]
+    },
+    "id": 3445,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3439,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "46:23:12"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "canonicalName": "Receiver",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 3444,
+        "linearizedBaseContracts": [
+          3444
+        ],
+        "name": "Receiver",
+        "nameLocation": "89:8:12",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 3442,
+              "nodeType": "Block",
+              "src": "139:7:12",
+              "statements": []
+            },
+            "functionSelector": "495057be",
+            "id": 3443,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addonPay",
+            "nameLocation": "113:8:12",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3440,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "121:2:12"
+            },
+            "returnParameters": {
+              "id": 3441,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "139:0:12"
+            },
+            "scope": 3444,
+            "src": "104:42:12",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 3445,
+        "src": "71:77:12",
+        "usedErrors": []
+      }
+    ],
+    "src": "46:103:12"
+  },
+  "bytecode": "",
+  "bytecodeSha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 100
+    },
+    "version": "0.8.9+commit.e5eed63a"
+  },
+  "contractName": "Receiver",
+  "coverageMap": {
+    "branches": {},
+    "statements": {}
+  },
+  "dependencies": [],
+  "deployedBytecode": "",
+  "deployedSourceMap": "",
+  "language": "Solidity",
+  "natspec": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "offset": [
+    71,
+    148
+  ],
+  "opcodes": "",
+  "pcMap": {},
+  "sha1": "6a02fd1c205c85dfa8640d0f21918687200b14ea",
+  "source": "// SPDX-License-Identifier:        UNLICENSED\npragma solidity ^0.8.0;\n\nabstract contract Receiver {\n    function addonPay() public payable {\n    }\n}\n",
+  "sourceMap": "",
+  "sourcePath": "contracts/send_receive.sol",
+  "type": "contract"
+}

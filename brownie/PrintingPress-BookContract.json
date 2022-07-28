@@ -1,0 +1,1 @@
+{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"who","type":"address"},{"indexed":false,"internalType":"address","name":"what","type":"address"}],"name":"BookContract","type":"event"}

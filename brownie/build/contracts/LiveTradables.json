@@ -1,0 +1,258 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getNBT",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_hId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSpawn",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "18": "contracts/LiveTradables.sol"
+  },
+  "ast": {
+    "absolutePath": "contracts/LiveTradables.sol",
+    "exportedSymbols": {
+      "LiveTradables": [
+        10689
+      ]
+    },
+    "id": 10690,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10676,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:23:18"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "LiveTradables",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 10689,
+        "linearizedBaseContracts": [
+          10689
+        ],
+        "name": "LiveTradables",
+        "nameLocation": "74:13:18",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "33d119eb",
+            "id": 10683,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSpawn",
+            "nameLocation": "100:8:18",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10679,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10678,
+                  "mutability": "mutable",
+                  "name": "_hId",
+                  "nameLocation": "117:4:18",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10683,
+                  "src": "109:12:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10677,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "109:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "108:14:18"
+            },
+            "returnParameters": {
+              "id": 10682,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10681,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10683,
+                  "src": "140:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10680,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "140:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "139:9:18"
+            },
+            "scope": 10689,
+            "src": "91:58:18",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "51f41ee3",
+            "id": 10688,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getNBT",
+            "nameLocation": "160:6:18",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10684,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "166:2:18"
+            },
+            "returnParameters": {
+              "id": 10687,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10686,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10688,
+                  "src": "186:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10685,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "186:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "185:9:18"
+            },
+            "scope": 10689,
+            "src": "151:44:18",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 10690,
+        "src": "64:134:18",
+        "usedErrors": []
+      }
+    ],
+    "src": "39:160:18"
+  },
+  "bytecode": "",
+  "bytecodeSha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 100
+    },
+    "version": "0.8.14+commit.80d49f37"
+  },
+  "contractName": "LiveTradables",
+  "coverageMap": {
+    "branches": {},
+    "statements": {}
+  },
+  "dependencies": [],
+  "deployedBytecode": "",
+  "deployedSourceMap": "",
+  "language": "Solidity",
+  "natspec": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "offset": [
+    64,
+    198
+  ],
+  "opcodes": "",
+  "pcMap": {},
+  "sha1": "58e5e207e9c9a3682b8545050eeb3fa82ddf93f9",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.0;\n\ninterface LiveTradables {\n\tfunction getSpawn(uint256 _hId) external returns(uint256);\n\tfunction getNBT() external returns(address);\n\n}\n",
+  "sourceMap": "",
+  "sourcePath": "contracts/LiveTradables.sol",
+  "type": "interface"
+}
