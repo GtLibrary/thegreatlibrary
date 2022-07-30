@@ -242,7 +242,11 @@ def Minter(potential, datamine, contractType, whoFile):
     secureUri += _burnable + "/" + _maxmint + "/" + _defaultprice + "/" + _defaultfrom + "/" + _mintTo + "!" + whoFile
 
     print(secureUri)
-    getFromBackend(secureUri)
+    contractid = getFromBackend(secureUri)
+    print("contract on python side: " + contractid)
+    f = open(whoFile, "w")
+    f.write(contractid)
+    f.close()
 
 
 

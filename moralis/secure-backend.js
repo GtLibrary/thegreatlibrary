@@ -126,8 +126,8 @@ function runServer(passPhrase) {
 
 
         		var contractid;		// This will be the real contract when the tx completes.
-			await newBookContractWithLockFile(whoFile, _name, _symbol, _bookRegistryAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo, cCAPrivateKey);
-			res.end();
+			contractid = await newBookContractWithLockFile(whoFile, _name, _symbol, _bookRegistryAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo, cCAPrivateKey);
+			res.end(contractid);
 		} else {
 			res.end();
 		}
@@ -193,10 +193,13 @@ async function newBookContractWithLockFile(whoFile, _name, _symbol, _bookRegistr
 			}
 		}
 
+		return contractid;
+
         } catch (e) {
                 console.log('error calling newBookContract: ',  e);
 		//tools.writeFile(retTxt, e);
                 return;
         }
+
 }
 

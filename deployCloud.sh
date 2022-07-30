@@ -41,7 +41,7 @@ echo "const nonceWindow = \"$nonceWindow\";" >> index.js
 cp index.js cloudfolder/
 
 ### Game CSharp GameEnv.cs
-GAMEENV="core/Assets/MoralisWeb3ApiSdk/GameEnv.cs"
+GAMEENV="GameEnv.cs"
 
 echo "namespace MoralisWeb3ApiSdk { public class GameEnv {" > $GAMEENV
 echo "public static string timeCubeAddress = \""$timeCubeAddress\"';' >> $GAMEENV

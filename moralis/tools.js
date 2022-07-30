@@ -5,6 +5,8 @@ require('dotenv').config({ path: '/home/john/bakerydemo/.env',  override: true, 
 const crypto = require('crypto');
 const algorithm = 'aes-256-ctr';
 
+const path = require('path');
+
 const cCAPrivateKey=process.env.cCAPrivateKey;
 const cCAPrivateKeyEncrypted=process.env.cCAPrivateKeyEncrypted;
 const cultureCoinAddress=process.env.cultureCoinAddress;
@@ -44,6 +46,7 @@ const Contract = require('web3-eth-contract');
 
 Moralis.start({ serverUrl, appId });
 
+console.log("spedynodes are now pointing to: ", speedyNode);
 const web3 = new Web3(new Web3.providers.HttpProvider(speedyNode));
 
 const NBT_abi = JSON.parse(fs.readFileSync('/home/john/bakerydemo/brownie/BookTradable.json', 'utf8'));
@@ -649,6 +652,12 @@ function readFile(fileName) {
 }
 
 function writeFile(fileName, data) {
+	const dirName = path.dirname(fileName);
+
+	if(!fs.existsSync(dirName)) {
+		fs.mkdirSync(dirName, {recursive: true});
+	}
+
 	fs.writeFileSync(fileName, data.toString(), 'utf8');
 }
 
