@@ -8,17 +8,20 @@ import SHOP_DATA from '../shop';
 
 const HomePage = () => {
   const [products, setProducts] = useState(SHOP_DATA)
-  const url = "http://localhost:9466/api/getproducts";
+
+  const s = (object) => {
+    console.log("object", object)
+  }
+
+  const url = "http://localhost:9466/api/v2/pages/?type=base.HomePage&fields=*";
   useEffect(() => {
     async function getProducts() {
       const config = {
         method: 'get',
         url: url,
-        // headers: { 
-        //   'Content-Type': 'text/html; charset=utf-8',
-        //   'X-Frame-Options': 'SAMEORIGIN',
-        //   'X-Content-Type-Options': 'nosniff' 
-        // }
+        headers: { 
+          'Content-type': 'application/json',
+        }
       }
       await axios(config)
         .then(res => {
