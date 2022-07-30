@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
-from django.urls import include, path, re_path
+from django.urls import include, path
 
 from django.conf.urls import url
 
@@ -58,18 +58,20 @@ urlpatterns = [
     ### FOR REACT ###
     path('api/', include('bakerydemo.mobileapp.urls')),
 	url(r'^api/art/$', frontendapi_views.art),
-	# url(r'^api/getproducts', frontendapi_views.home),
 	# url(r'^api/home', frontendapi_views.home),
+	# url(r'^api/getproducts', frontendapi_views.home),
 	# url(r'^api/mobileapp/(?P<pk>[0-9]+)$', views.mobileapp_detail),
     #path('home/', include('bakerydemo.frontend.urls')),
 
-    url(r'^getData/', frontend_views.get_data),
+    # url(r'^getData/', frontend_views.get_data),
     url(r'mobileapp', TemplateView.as_view(template_name="mobilehome.html"), name="mobilehome"),
+
+
+
+
 
     #url(r'^froala_editor/', include('froala_editor.urls')),
 
-    # Ensure that the api_router line appears above the default Wagtail page serving route
-    re_path(r'^', include(wagtail_urls)),
 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

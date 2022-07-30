@@ -1037,7 +1037,8 @@ def getContentPdf(arttype, curserial_num, datamine, redirectCount, daedalusToken
                     html = recodehtml(potential, html, datamine, curserial_num)
                     print(str(datamine))
                     print(str(curserial_num))
-                    
+                    print("------------------------------------")
+                    print(html)
                     f = open('/home/john/bakerydemo/bakerydemo/templates/art/datamines/' + datamine + '/jrre-index.html.nft/index.html.' +  curserial_num + '.html', "wb")
                     f.write(html)
                     f.close()
@@ -1045,9 +1046,8 @@ def getContentPdf(arttype, curserial_num, datamine, redirectCount, daedalusToken
                 else:
                     if redirectCount < 3:
                         # return myredirect(request, '/art/?' + 'type=default&redirect=' + str(redirectCount) + '&datamine=' + datamine)
-                        bmsupply = getTotalBMTokens(potential, datamine)
-                        getContentPdf('book', str(bmsupply-1), datamine, str(redirectCount+1), daedalusToken, msg, signature, tokenid, potential,request)
-                        
+                        return arttype
+
                     this_is_bad_jrreditor_exeception_we_shouldreturn_potential_maybe
                     pass
 

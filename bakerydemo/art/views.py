@@ -41,6 +41,18 @@ marketPlaceAddress = os.environ['marketPlaceAddress']
 if not marketPlaceAddress:
     #marketPlaceAddress = "0x0000000000000000000000000000000000000000"
     print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
+    print("I dont have a marketPlaceAddress")
 
 moralisdir = "/home/john/bakerydemo/moralis/"
 
@@ -77,7 +89,7 @@ def get_serials(curserial_num, potential = None):
     serial = []
     for i in range(int(my_curserial_num)):
         #print("get_serials says::: i: " + str(i))
-        serial.append(' class=ss title=' + str(i) + ' name=serial.' + str(i)) # + ' onmouseover=s(this)'
+        serial.append(' class=ss title=' + str(i) + ' name=serial.' + str(i)  + ' onmouseover=s(this)')
 
     context = {
         'serial': serial,
@@ -352,65 +364,67 @@ def getbody(potential, datamine):
 
 <div class="container" >
 <div class="modal fade" id="myModal" role="dialog" style="display:none;">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Inspecting Bookmark</h4>
-            </div>
-            <div class="modal-body">
-                <div id="videoContainer"></div>
-                <div class="mypricedongle">
-                <h5>Price for bookmark: <span id="tokenspan"></span> """ + datamine + """ </h5>
-                <span>Contract:</span> <span id="contractspan">BETA</span>
-                <span>Network:</span><span id=networkspan>""" + getSiteName() + """</span> 
-                <span>Price: </span><span id="pricespan">Caculating...</span>
-                <span id="offeringspantext" style="display:none;">Offering: </span><span id="offeringspan" style="display:none;">Finding...</span>
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Inspecting Bookmark</h4>
+</div>
+<div class="modal-body">
+    <div id="videoContainer"></div>
+      <div class="mypricedongle">
+      <h5>Price for bookmark: <span id="tokenspan"></span> """ + datamine + """ </h5>
+       <span>Contract:</span> <span id="contractspan">BETA</span>
+       <span>Network:</span><span id=networkspan>""" + getSiteName() + """</span> 
+       <span>Price: </span><span id="pricespan">Caculating...</span>
+       <span id="offeringspantext" style="display:none;">Offering: </span><span id="offeringspan" style="display:none;">Finding...</span>
 
-                <button type="button" id="btn-buy-bmrk" onclick=buythisbookmark(event)>Buy bookmark</button>
-                <button type="button" id="btn-pet-ben" onclick=petben(event)>Pet BEN</button>
+       <button type="button" id="btn-buy-bmrk" onclick=buythisbookmark(event)>Buy bookmark</button>
+       <button type="button" id="btn-pet-ben" onclick=petben(event)>Pet BEN</button>
 
-                <hr>
+       <hr>
 
-                <h5>For owner <span id="ownerspan">unknown</span></h5>
-                <button type="button" id="btn-sell-bmrk" onclick=sellthisbookmark(event)>Sell bookmark</button>
-                for: <input type="text" id="sellerprice" name="fname" value="5"><br>
-                <button type="button" id="btn-send-bmrk" onclick=sendthisbookmark(event)>Send bookmark</button>
-                to: <input type="text" id="toaddress" name="fname" value="0x213E6E4167C0262d8115A8AF2716C6C88a6905FD" size="42"><br>
+       <h5>For owner <span id="ownerspan">unknown</span></h5>
+       <button type="button" id="btn-sell-bmrk" onclick=sellthisbookmark(event)>Sell bookmark</button>
+       for: <input type="text" id="sellerprice" name="fname" value="5"><br>
+       <button type="button" id="btn-send-bmrk" onclick=sendthisbookmark(event)>Send bookmark</button>
+       to: <input type="text" id="toaddress" name="fname" value="0x213E6E4167C0262d8115A8AF2716C6C88a6905FD" size="42"><br>
 
-                <br>
+       <br>
 
-                <hr>
-                    <h5>Use the Great Library's faucets directly...</h5>
-                    <button type="button" id="btn-test-faucet" onclick=testlibraryfaucet(event)>Request a new Culture Coin Seedling</button>
+       <hr>
+         <h5>Use the Great Library's faucets directly...</h5>
+         <button type="button" id="btn-test-faucet" onclick=testlibraryfaucet(event)>Request a new Culture Coin Seedling</button>
 
-                    <button type="button" id="btn-test-bmrk" onclick=testthisbookmark(event)>Test bookmark</button>
-                    <input type="text" id="testprice" name="fname" value="Hi BEN!"><br><br>
-                    <pre id="testresult"></pre>
+         <button type="button" id="btn-test-bmrk" onclick=testthisbookmark(event)>Test bookmark</button>
+         <input type="text" id="testprice" name="fname" value="Hi BEN!"><br><br>
+         <pre id="testresult"></pre>
 
-                <hr>
-                    <h5>The Great Library's Bridge</h5>
-                    <button type="button" id="btn-apply-rates" onclick=applydexrates(event)>Apply DEX rates</button>
-                    X Rate: <input type="text" id="dexXMTSPRateId" size="5" value=""> CC Rate: <input type="text" id="dexCCRateId" size="5" value=""><br><br>
-                    <button type="button" id="btn-find-rates" onclick=finddexrates(event)>Find new DEX rates</button>
-                    <hr>
-                    <button type="button" id="btn-set-stake-rate" onclick=setstakerate(event)>Set Stake Rate</button>
-                    Stake Rate: <input type="text" id="stakerateid" size="5" value="">
-                    <button type="button" id="btn-get-stake-rate" onclick=getstakerate(event)>Get Stake Rate</button>
+      <hr>
+         <h5>The Great Library's Bridge</h5>
+         <button type="button" id="btn-apply-rates" onclick=applydexrates(event)>Apply DEX rates</button>
+         X Rate: <input type="text" id="dexXMTSPRateId" size="5" value=""> CC Rate: <input type="text" id="dexCCRateId" size="5" value=""><br><br>
+         <button type="button" id="btn-find-rates" onclick=finddexrates(event)>Find new DEX rates</button>
+         <hr>
+         <button type="button" id="btn-set-stake-rate" onclick=setstakerate(event)>Set Stake Rate</button>
+         Stake Rate: <input type="text" id="stakerateid" size="5" value="">
+         <button type="button" id="btn-get-stake-rate" onclick=getstakerate(event)>Get Stake Rate</button>
 
 
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-        </div>
-    </div>
+      </div>
+
+ 
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
-    <!--<div id="app-header-btns"></div> -->
+    <div id="app-header-btns"></div>
     <section id="content" class="container"></section>
     <!-- script>  + loadSite()  + </script -->
     <script src="/static/js/defaults.js"></script>
@@ -418,16 +432,16 @@ def getbody(potential, datamine):
     <script src="/static/js/books.nft.js"></script>
 
     <style>
-        .box{
-            display: none;
-            width: 100%;
-        }
+.box{
+    display: none;
+    width: 100%;
+}
 
-        span:hover + .box,.box:hover{
-            display: inline;
-            position: relative;
-            z-index: 100;
-        }
+span:hover + .box,.box:hover{
+    display: inline;
+    position: relative;
+    z-index: 100;
+}
     </style>
 
         <main> <!-- Marketplace -->
@@ -800,7 +814,6 @@ def art(request):
     print("tokenid: " + tokenid)
 
     potential = calculate_project_potential(datamine, curserial_num, "book", error_fingerprint="default")
-    print("potential ===== ", potential)
     if not os.path.exists(books.datamine_path(datamine)):
         os.mkdir(books.datamine_path(datamine))
 
@@ -909,8 +922,6 @@ def art(request):
 
                         # We have the art!!! First time on the jrreditor side of the house.
                         html = recodehtml(potential, html, datamine, curserial_num)
-                        print(str(datamine))
-                        print(str(curserial_num))
                         f = open('/home/john/bakerydemo/bakerydemo/templates/art/datamines/' + datamine + '/jrre-index.html.nft/index.html.' +  curserial_num + '.html', "wb")
                         f.write(html)
                         f.close()
@@ -1065,4 +1076,3 @@ def index(request):
 
 def serviceworker(request):
     return FileResponse(open("/home/john/bakerydemo/bakerydemo/static/js/service-worker.js", "rb"), content_type="application/javascript")
-
