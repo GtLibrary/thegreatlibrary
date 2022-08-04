@@ -1,1 +1,0 @@
-{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"offeringId","type":"bytes32"},{"indexed":true,"internalType":"address","name":"buyer","type":"address"}],"name":"OfferingClosed","type":"event"}
