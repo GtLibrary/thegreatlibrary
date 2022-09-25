@@ -125,7 +125,7 @@ def gethead(self, datamine, cur_serial):
 
 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="https://unpkg.com/moralis-v1/dist/moralis.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
