@@ -46,7 +46,7 @@ from bakerydemo.art.moralis import Moralis
 moralis = Moralis()
 
 #os.environ['DJANGO_SETTINGS_MODULE']
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = "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"
 
 securePort = os.environ['securePort']
 secureHost = os.environ['secureHost']
@@ -1127,7 +1127,7 @@ def generate_chat_response(message_arr, context, chatid_input):
         thread_stub = {"role": "system", "content": context}
 
     thread_message = [thread_stub] + message_arr
-    print("thread_message: " + str(thread_message))
+    #print("thread_message: " + str(thread_message))
     completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=thread_message, temperature=0.0)
     return [completion.choices[0].message, context, chatid_input]
 
@@ -1192,8 +1192,8 @@ def write_to_log_file(message_array, response_message, context, threadid):
                 prompt = message_array[i]['content']
                 completion = message_array[i+1]['content'] if i+1 < len(message_array) and message_array[i+1]['role'] == 'assistant' else ''
                 writer.write({'prompt': prompt, 'completion': completion})
-                print("prompt: ", prompt)
-                print("completion", completion)
+                #print("prompt: ", prompt)
+                #print("completion", completion)
     return threadid
 
 
@@ -1218,9 +1218,9 @@ def load_chat(request):
 def chat(request):
     if request.method == 'POST':
         #print(dir(request.body))
-        print(request.META['CONTENT_TYPE'])
+        #print(request.META['CONTENT_TYPE'])
         body_unicode = str(request.body.decode('utf-8'))
-        print("body_unicode, " + body_unicode)
+        #print("body_unicode, " + body_unicode)
 
         message_array = [] # request.session.get('message_array', [])
 
@@ -1234,27 +1234,27 @@ def chat(request):
             multipart_data = decoder.MultipartDecoder(body_unicode.encode('utf-8'), request.META['CONTENT_TYPE'])
             for part in multipart_data.parts:
                 content = str(part.content.decode("utf-8"))
-                print("PART: " + str(part.content.decode("utf-8")))  # Alternatively, part.text if you want unicode
-                print(part)
-                print(dir(part))
-                print("PART HEADERS: " + str(part.headers))
-                print(dir(part.headers))
-                print("name: " + content_headers_get_name(part.headers))
+                #print("PART: " + str(part.content.decode("utf-8")))  # Alternatively, part.text if you want unicode
+                #print(part)
+                #print(dir(part))
+                #print("PART HEADERS: " + str(part.headers))
+                #print(dir(part.headers))
+                #print("name: " + content_headers_get_name(part.headers))
                 #print(part.header.name)
 
                 name = content_headers_get_name(part.headers)
                 if name == "csrfmiddlewaretoken":
-                    print("DEBUG: csrfmiddlewaretoken")
+                    #print("DEBUG: csrfmiddlewaretoken")
                     continue
 
                 if name == "user_input":
                     user_input = str(part.content.decode("utf-8"))
-                    print("USER INPUT: " + user_input)
+                    #print("USER INPUT: " + user_input)
                     continue
 
                 if name =="context":
                     context = str(part.content.decode("utf-8"))
-                    print("CONTEXT: " + context)
+                    #print("CONTEXT: " + context)
                     continue
 
                 if name =="chatid_input":
@@ -1269,7 +1269,7 @@ def chat(request):
                 match = re.search(r'\d+$', string)
                 if match:
                     number = int(match.group())
-                    print(number)
+                    #print(number)
                     if (number % 2) == 0:
                         message_array.append({"role": "assistant", "content": content})
                     else:
@@ -1284,17 +1284,17 @@ def chat(request):
         #user_input = body_unicode #request.POST.get('user_input')
 
         #message_array = [] # request.session.get('message_array', [])
-        print("message_arrry: " + str(message_array))
+        #print("message_arrry: " + str(message_array))
         if user_input in ESCAPE_KEYS:
             request.session.flush()
             return render(request, 'art/chat.html')
         message_obj = {"role": "user", "content": user_input}
         message_array.append(message_obj)
         [response_message, context, chatid] = generate_chat_response(message_array, context, chatid_input)
-        print("context: " + context)
+        #print("context: " + context)
         message_array.append({"role": "assistant", "content": str(response_message)})
         request.session['message_array'] = message_array
-        print(message_array)
+        #print(message_array)
 
         chatid = write_to_log_file(message_array, response_message, context, chatid)
 
