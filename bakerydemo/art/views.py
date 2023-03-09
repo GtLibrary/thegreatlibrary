@@ -1298,8 +1298,21 @@ def chat(request):
 
         chatid = write_to_log_file(message_array, response_message, context, chatid)
 
+        modelids = getModelIds()
+
         return render(request, 'art/chat.html', {'response_message': response_message, 'message_array': message_array, 'context': context, 'chatid': chatid, 'sdkid': sdkid_input})
     else:
         request.session.flush()
         return render(request, 'art/chat.html')
+
+def getModelIds():
+    return listIds(json.load(subprocess.check_output(['openai', 'api', 'fine_tunes.list'])))
+
+def listIds(parsed_object):
+    ids = []
+    for item in parsed_object['data']:
+        if item['fine_tuned_model'] is not None:
+            ids.append(item['id'])
+    return ids
+
 
