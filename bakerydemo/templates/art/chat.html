@@ -128,6 +128,11 @@
 			console.log(modifiedResponseMessage);
 			responseDiv.innerHTML = modifiedResponseMessage;
 
+			/* function myFunction(e) {
+				console.log("myFunction: ", e);
+				e.innerHtml = decodeAssistantContent(e.innerHtml);
+			} */
+
 		</script>
 
 		<form action="/art/loadchat" method="get">
@@ -144,7 +149,16 @@
 
 				{% for message in message_array %}
 				<div>
-					<textarea name="message{{forloop.counter}}" class="taexpand input-text message {{ message.role }}" >{{message.content}}</textarea>
+					<textarea name="message{{forloop.counter}}" id=message{{forloop.counter}} class="taexpand input-text message {{ message.role }}" >{{message.content}}</textarea>
+					 <script> {
+						const textarea = document.getElementById('message{{forloop.counter}}');
+						//console.log("textarea: ", textarea);
+						//console.log("textarea: ", textarea.value);
+						const content = textarea.value;
+						//console.log("content: ", content);
+						textarea.value = decodeAssistantContent(content);
+					  } </script>
+
 					<span class="deletespan" onClick="delete_row(this)">Delete</span>
 				</div>
 				{% endfor %}
