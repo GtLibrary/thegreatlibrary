@@ -35,6 +35,7 @@ urlpatterns = [
 
     path('search/', search_views.search, name='search'),
 
+    url('^art/testepub/', csrf_exempt(art_views.testepub), name='testepub'),
     url('^art/myopenai/', csrf_exempt(art_views.myopenai), name='myopenai'),
     url('^art/chat/', csrf_exempt(art_views.chat), name='chat'),
     url('^art/load_chat/', csrf_exempt(art_views.load_chat), name='load_chat'),

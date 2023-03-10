@@ -13,6 +13,8 @@ import jsonlines
 import random
 import string
 
+import subprocess
+
 #print(dir(openai))
 
 
@@ -46,7 +48,7 @@ from bakerydemo.art.moralis import Moralis
 moralis = Moralis()
 
 #os.environ['DJANGO_SETTINGS_MODULE']
-openai.api_key = "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"
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 securePort = os.environ['securePort']
 secureHost = os.environ['secureHost']
@@ -1105,8 +1107,8 @@ def myopenai(request):
     content = body['message']
 
     response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt="Rewrite the following to highlight any grammar, spelling, or clarity issues with the narrative:" + content,
+        model="davinci:ft-personal-2023-03-09-04-03-28",
+        prompt="Rewrite the following to fix any grammar, spelling, or clarity issues with the narrative:" + content,
         temperature=0.7,
         max_tokens=256,
         top_p=1,
@@ -1165,7 +1167,7 @@ def messages_to_completion(message_array):
     return completion
 
 
-def write_to_log_file(message_array, response_message, context, threadid):
+def write_to_log_file(message_array, response_message, context, threadid, modelid):
     #with jsonlines.open('/home/john/bakerydemo/chatGPT/chat_logs.jsonl', mode='a') as writer::0
 
     if threadid == "":
@@ -1179,6 +1181,7 @@ def write_to_log_file(message_array, response_message, context, threadid):
         pickle.dump(response_message, f)
         pickle.dump(context, f)
         pickle.dump(threadid, f)
+        pickle.dump(modelid, f)
 
     filename = threadid + '.jsonl'
     with jsonlines.open('/home/john/bakerydemo/chatGPT/holographic-' + filename, mode='a') as writer:
@@ -1201,16 +1204,23 @@ def write_to_log_file(message_array, response_message, context, threadid):
 def load_chat(request):
     threadid = request.GET.get('chatid', '')
     sdkid = request.GET.get('sdkid', '')
+    modelid = request.GET.get('modelid', '')
+    if modelid == "":
+        modelid = 'gpt-3.5-turbo'
+
     try:
         with open('/home/john/bakerydemo/chatGPT/chat-' + threadid + '.pickle', 'rb') as f:
             message_array = pickle.load(f)
             response_message = pickle.load(f)
             context = pickle.load(f)
             threadid = pickle.load(f)
+            modelid = pickle.load(f)
 
-            return render(request, 'art/chat.html', {'response_message': response_message, 'message_array': message_array, 'context': context, 'chatid': threadid, 'sdkid': sdkid})
+            return render(request, 'art/chat.html', {'response_message': response_message, 'message_array': message_array, 'context': context, 'chatid': threadid, 'sdkid': sdkid,
+                'modelids': getModelIds(), 'chosenmodelid': modelid})
     except:
-        return render(request, 'art/chat.html')
+        print("modelid: " + modelid)
+        return render(request, 'art/chat.html', {'modelids': getModelIds(), 'modelid': modelid})
 
 
 
@@ -1225,6 +1235,7 @@ def chat(request):
         message_array = [] # request.session.get('message_array', [])
 
         sdkid_input = ""
+        modelid = ""
         chatid_input = ""
         user_input = ""
         context = ""
@@ -1243,8 +1254,16 @@ def chat(request):
                 #print(part.header.name)
 
                 name = content_headers_get_name(part.headers)
+                print("name: " + name)
+
+
                 if name == "csrfmiddlewaretoken":
                     #print("DEBUG: csrfmiddlewaretoken")
+                    continue
+
+                if name == "modelids":
+                    modelid = content
+                    print("content: " + content)
                     continue
 
                 if name == "user_input":
@@ -1296,23 +1315,61 @@ def chat(request):
         request.session['message_array'] = message_array
         #print(message_array)
 
-        chatid = write_to_log_file(message_array, response_message, context, chatid)
+        if modelid == "":
+            print("setting model id...")
+            modelid = 'gpt-3.5-turbo'
 
-        modelids = getModelIds()
+        print("modelid:"+ modelid)
 
-        return render(request, 'art/chat.html', {'response_message': response_message, 'message_array': message_array, 'context': context, 'chatid': chatid, 'sdkid': sdkid_input})
+        chatid = write_to_log_file(message_array, response_message, context, chatid, modelid)
+
+
+        return render(request, 'art/chat.html', {'response_message': response_message,
+                    'message_array': message_array, 'context': context, 'chatid': chatid,
+                    'sdkid': sdkid_input, 'modelids': getModelIds(), 'modelid': modelid})
     else:
         request.session.flush()
         return render(request, 'art/chat.html')
 
 def getModelIds():
-    return listIds(json.load(subprocess.check_output(['openai', 'api', 'fine_tunes.list'])))
+    subplist = subprocess.check_output(['openai', 'api', 'fine_tunes.list'])
+
+    return listIds(json.loads(subplist.decode('utf-8')))
 
 def listIds(parsed_object):
     ids = []
     for item in parsed_object['data']:
         if item['fine_tuned_model'] is not None:
-            ids.append(item['id'])
+            #ids.append(item['id'])
+            ids.append(item['fine_tuned_model'])
     return ids
+
+
+@api_view(['GET', ])
+def testepub(request):
+    ## Returns alice and wonderland as test 
+
+    from ebooklib import epub
+    #book = epub.EpubBook()
+    #book.set_title('Alice in Wonderland')
+    #book.set_language('en')
+    #book.add_author('Lewis Carroll')
+    #c = epub.EpubHtml(title='Chapter 1', file_name='chap_01.xhtml', lang='en')
+    #c.content=u'<html><head></head><body><h1>Chapter 1</h1><p>Down the Rabbit-Hole</p></body></html>'
+    #book.add_item(c)
+    #book.spine = ['nav', c]
+    #epub.write_epub('alice.epub', book, {})
+
+    myepub = epub.read_epub('/home/john/alice.epub')
+    print(myepub)
+
+    # Read the .epub file into memory
+    with open('/home/john/alice.epub', 'rb') as f:
+        epub_content = f.read()
+
+    # Return the .epub file as a response
+    response = HttpResponse(epub_content, content_type='application/epub+zip')
+    #response['Content-Disposition'] = 'attachment; filename="alice.epub"'
+    return response
 
 
