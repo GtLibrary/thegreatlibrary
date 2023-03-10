@@ -43,6 +43,8 @@ from bakerydemo.art.minter import MyFirstMinter
 from bakerydemo.art.minter import MySecondMinter
 #from bakerydemo.art.minter import Minter
 
+from ebooklib import epub
+
 from bakerydemo.art.moralis import Moralis
 
 moralis = Moralis()
@@ -1344,12 +1346,72 @@ def listIds(parsed_object):
             ids.append(item['fine_tuned_model'])
     return ids
 
+@api_view(['GET', ])
+def testhtml(request):
+    #epub_content = "<html><body>...Loaded</body></html>"
+
+    book = epub.EpubBook()
+    book.set_title('Alice in Wonderland')
+    book.set_language('en')
+    book.add_author('Lewis Carroll')
+    c = epub.EpubHtml(title='Chapter 1', file_name='chap_01.xhtml', lang='en')
+    c.content=u'<html><head></head><body><h1>Chapter 1</h1><p>Down the Rabbit-Hole</p></body></html>'
+    book.add_item(c)
+    book.spine = ['nav', c, 'name', 'This is the name of the book']
+    epub.write_epub('alice.epub', book, {})
+    epub.write_epub('alice.zip', book, {})
+
+    response = HttpResponse(c.content, content_type='text/html')
+    return response
+    
+
+
+@api_view(['GET', ])
+def testalice(request):
+    #myepub = epub.read_epub('alice.epub')
+
+    book = epub.EpubBook()
+    book.set_title('Alice in Wonderland')
+    book.set_language('en')
+    book.add_author('Lewis Carroll')
+    c = epub.EpubHtml(title='Chapter 1', file_name='chap_01.xhtml', lang='en')
+    c.content=u'<html><head></head><body><h1>Chapter 1</h1><p>Down the Rabbit-Hole</p></body></html>'
+    book.add_item(c)
+    book.spine = ['nav', c, 'name', 'This is the name of the book']
+    epub.write_epub('alice.epub', book, {})
+    epub.write_epub('alice.zip', book, {})
+
+    import zipfile
+    path_to_zip_file = 'alice.zip'
+    directory_to_extract_to = "."
+    with zipfile.ZipFile(path_to_zip_file, 'r') as zip_ref:
+        zip_ref.extractall(directory_to_extract_to)
+
+
+    f = open("EPUB/chap_01.xhtml")
+    html_content = f.read()
+
+    return HttpResponse(html_content, content_type='text/html')
+
+    #file_name = 'alice.zip'
+
+    #with ZipFile(file_name, 'r') as zip:
+        # printing all the contents of the zip file
+        #zip.printdir()
+  
+    # extracting all the files
+    #print('Extracting all the files now...')
+    #zip.extractall()
+    #print('Done!')
+
+    #print(myepub)
+
+
 
 @api_view(['GET', ])
 def testepub(request):
     ## Returns alice and wonderland as test 
 
-    from ebooklib import epub
     #book = epub.EpubBook()
     #book.set_title('Alice in Wonderland')
     #book.set_language('en')
@@ -1369,7 +1431,7 @@ def testepub(request):
 
     # Return the .epub file as a response
     response = HttpResponse(epub_content, content_type='application/epub+zip')
-    #response['Content-Disposition'] = 'attachment; filename="alice.epub"'
+    response['Content-Disposition'] = 'inline; filename="alice.epub"'
     return response
 
 

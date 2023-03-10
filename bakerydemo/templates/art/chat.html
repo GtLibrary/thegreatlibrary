@@ -151,6 +151,16 @@
 
 				<textarea name="user_input" class="taexpand input-text" placeholder="Type your message here..." ></textarea>
 				<button type="submit" class="input-submit">Send</button>
+
+				<div class="model-select">
+  					<label for="model-select">Select a fine-tuned model:</label>
+  					<select name="modelids" id="model-select">
+						<option value="none" selected disabled>gpt-3.5-turbo</option>
+    						{% for modelid in modelids %}
+      							<option value="{{ modelid }}">{{ modelid }}</option>
+    						{% endfor %}
+  					</select>
+				</div>
 			</div>
 		</form>
 	</div>
