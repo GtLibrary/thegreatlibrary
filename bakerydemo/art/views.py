@@ -8,6 +8,7 @@ import pickle
 from os.path import exists
 import requests
 import urllib
+from urllib.parse import parse_qs
 import openai
 import jsonlines
 import random
@@ -1110,7 +1111,7 @@ def myopenai(request):
 
     response = openai.Completion.create(
         model="davinci:ft-personal-2023-03-09-04-03-28",
-        prompt="Rewrite the following to fix any grammar, spelling, or clarity issues with the narrative:" + content,
+        prompt=content,
         temperature=0.7,
         max_tokens=256,
         top_p=1,
@@ -1230,7 +1231,7 @@ def load_chat(request):
 def chat(request):
     if request.method == 'POST':
         #print(dir(request.body))
-        #print(request.META['CONTENT_TYPE'])
+        print(request.META['CONTENT_TYPE'])
         body_unicode = str(request.body.decode('utf-8'))
         #print("body_unicode, " + body_unicode)
 
@@ -1241,8 +1242,31 @@ def chat(request):
         chatid_input = ""
         user_input = ""
         context = ""
+        return_json = False
         if request.META['CONTENT_TYPE'] in ["application/json", "multipart/form-data"]:
             user_input = body_unicode;
+            print("user_input: " + user_input)
+
+            if request.META['CONTENT_TYPE'] == "multipart/form-data":
+                components = parse_qs(user_input)
+                print(components)
+                if "True" in components['return_json']:
+                    return_json = True;
+
+                if "user_input" in components.keys():
+                    user_input = components["user_input"][0];
+                if "context" in components.keys():
+                    context = components["context"][0]
+
+                if  "chatid_input" in components.keys():
+                    chatid_input = components["chatid_input"][0]
+
+                if "message1" in components.keys():
+                    message_array.append({"role": "user", "content": components['message1'][0]})
+
+                if "message2" in components.keys():
+                    message_array.append({"role": "assistant", "content": components['message2'][0]})
+
         else:
             multipart_data = decoder.MultipartDecoder(body_unicode.encode('utf-8'), request.META['CONTENT_TYPE'])
             for part in multipart_data.parts:
@@ -1262,6 +1286,12 @@ def chat(request):
                 if name == "csrfmiddlewaretoken":
                     #print("DEBUG: csrfmiddlewaretoken")
                     continue
+
+                if name == "return_json":
+                    if content == "True":
+                        return_json = True;
+                        print("should return json")
+                    continue;
 
                 if name == "modelids":
                     modelid = content
@@ -1326,11 +1356,17 @@ def chat(request):
         chatid = write_to_log_file(message_array, response_message, context, chatid, modelid)
 
 
+        if return_json:
+            json_obj = {"content": response_message, "type": "message"}
+            print(json_obj)
+            return JsonResponse(json_obj, safe=False)
         return render(request, 'art/chat.html', {'response_message': response_message,
                     'message_array': message_array, 'context': context, 'chatid': chatid,
                     'sdkid': sdkid_input, 'modelids': getModelIds(), 'modelid': modelid})
     else:
         request.session.flush()
+        if return_json:
+            return JsonResponse({"content": "Error get json not supported."})
         return render(request, 'art/chat.html')
 
 def getModelIds():

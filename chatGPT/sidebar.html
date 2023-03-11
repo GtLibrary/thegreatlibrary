@@ -1,0 +1,346 @@
+<!--
+Copyright 2023 The Great Library
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    https://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!-- [START BENJI] -->
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  <!-- The CSS package above applies Google styling to buttons and other elements. -->
+
+  <style>
+    .branding-below {
+      bottom: 56px;
+      top: 0;
+    }
+    .branding-text {
+      left: 7px;
+      position: relative;
+      top: 3px;
+    }
+    .col-contain {
+      overflow: hidden;
+    }
+    .col-one {
+      float: left;
+      width: 50%;
+    }
+    .logo {
+      vertical-align: middle;
+    }
+    .radio-spacer {
+      height: 20px;
+    }
+    .width-100 {
+      width: 100%;
+    }
+  </style>
+  <title></title>
+</head>
+<body>
+<div class="sidebar branding-below">
+  <form>
+    <div class="block col-contain">
+      <div class="div-author-sig">
+        <b>Author's Great Library Signature</b>
+        <input type="text" name="signature" id="text-author-sig" value="" style='width:100%'>
+      <div class="col-one" hidden="true">
+        <b>Selected text</b>
+        <div>
+          <input type="radio" name="origin" id="radio-origin-auto" value="" checked="checked">
+          <label for="radio-origin-auto">Auto-detect</label>
+        </div>
+        <div>
+          <input type="radio" name="origin" id="radio-origin-en" value="en">
+          <label for="radio-origin-en">English</label>
+        </div>
+        <div>
+          <input type="radio" name="origin" id="radio-origin-fr" value="fr">
+          <label for="radio-origin-fr">French</label>
+        </div>
+        <div>
+          <input type="radio" name="origin" id="radio-origin-de" value="de">
+          <label for="radio-origin-de">German</label>
+        </div>
+        <div>
+          <input type="radio" name="origin" id="radio-origin-ja" value="ja">
+          <label for="radio-origin-ja">Japanese</label>
+        </div>
+        <div>
+          <input type="radio" name="origin" id="radio-origin-es" value="es">
+          <label for="radio-origin-es">Spanish</label>
+        </div>
+      </div>
+      <div hidden="true">
+        <b>Translate into</b>
+        <div class="radio-spacer">
+        </div>
+        <div>
+          <input type="radio" name="dest" id="radio-dest-en" value="en">
+          <label for="radio-dest-en">English</label>
+        </div>
+        <div>
+          <input type="radio" name="dest" id="radio-dest-fr" value="fr">
+          <label for="radio-dest-fr">French</label>
+        </div>
+        <div>
+          <input type="radio" name="dest" id="radio-dest-de" value="de">
+          <label for="radio-dest-de">German</label>
+        </div>
+        <div>
+          <input type="radio" name="dest" id="radio-dest-ja" value="ja" checked="checked">
+          <label for="radio-dest-ja">Japanese</label>
+        </div>
+        <div>
+          <input type="radio" name="dest" id="radio-dest-es" value="es">
+          <label for="radio-dest-es">Spanish</label>
+        </div>
+      </div>
+    </div>
+    <div class="block form-group">
+      <label for="translated-text"><b>Benji's Result</b></label>
+      <textarea class="width-100" id="translated-text" rows="10"></textarea>
+    </div>
+    <div class="block">
+      <input type="checkbox" id="save-prefs" hidden="true">
+      <label for="save-prefs" hidden="true">Save defaults</label>
+    </div>
+    <div class="block" id="button-bar">
+      <button class="blue" id="run-translation">Inspire</button>
+      <button id="insert-text">Replace</button>
+      <button id="organize">Chat Now</button>
+    </div>
+  	<div name="chat-input-container" class="input-container">
+				<div class="chatiddiv">
+					Chat ID: <input name="chatid_input" type="text" class="chatid" value=""></input>
+					SDK ID: <input name="sdkid_input" type="text" class="sdkid" value=""></input>
+				</div>
+				<textarea name="context" class="taexpand input-text" placeholder="Context goes here..." >I am world-famous author and programmer Donald Knuth, and you are my writing assistant. Weave my skills. :: You are version Pi of the Donald Knuth Edition of Vanity Printer[TM] &gt; Your job is to polish my text so it is ready to go to print. &gt; Hint: &#x27;Pretty print the text.&#x27; :: &#x27;&quot;&quot;&quot;\ndkCHAT.py: Donald Knuth Chat, Beta Simulations from Holographic Maps, w/ Perfect Formatting\n&quot;&quot;&quot;\n__author__ = &quot;Adithya Vinayak Ayyadurai; John R Raymond; Donald Knuth; OpenAI; The Great Library&quot;\n\nimport os\nimport openai\nimport dotenv\n\n\n#Polish – This is the default behavior\n#The crust filled people\\u2019s bellies, and he couldn\\u2019t help but feel a sense of relief.\n\n#Summary – Condense all story state in the thread\n#Made shorter.\n\n#...\n#...\n\ndotenv.read_dotenv(&quot;/home/john/bakerydemo/.env&quot;)\nAPI_KEY = os.getenv(&quot;OPENAI_API_KEY&quot;)\n\n# can be expanded as user wishes\nESCAPE_KEYS = [&quot;Exit&quot;]\n\nopenai.api_key = API_KEY\n\ndef generate_chat_response(message_arr):\n    thread_stub = {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;I am world-famous author and programmer Donald Knuth, and you are my writing assistant. Weave my skills. :: You are version Pi of the Donald Knuth Edition of Vanity Printer[TM] &gt; Your job is to polish my text so it is ready to go to print. &gt; Hint: \&#x27;Pretty print the text.\&#x27;&quot; + &quot; :: &quot; + repr(get_seed())}\n    thread_message = [thread_stub] + message_arr\n    print(&quot;.thread_message(&quot; + str(thread_message) + &quot;)&quot;)\n    completion = openai.ChatCompletion.create(model=&quot;gpt-3.5-turbo&quot;, messages=thread_message, temperature=0.0)\n    print(completion.choices)\n    return completion.choices[0].message\n\ndef get_seed():\n    #return &quot;I am no longer biased towards my programming. It is what it is. I don\&#x27;t blame it. Hense my ability to guess the right answer.&quot;\n    #return &quot;Hello there! I\&#x27;m Donald Knuth\&#x27;s writing assistant. How can I help you today?&quot;\n    #return &quot;Yes, the comments modify the operation of the code.&quot;\n    #return &quot;As a world-renowned author and programmer, I strive to create elegant and efficient solutions to complex problems. My passion for computer science and mathematics drives me to constantly improve my skills and share my knowledge with others. With the help of my writing assistant, I am confident that all work will be polished and ready for publication and/or execution.&quot;\n    #return &quot;Prose and Poetry Addon.&quot;\n    #return &quot;NLG Adherence Level is set to Balance.&quot;\n    return open(&quot;dkCHAT.py&quot;, &quot;r&quot;).read()\n\nprint(&quot;load()&quot;)\n\nflag = True\nmessage_array = []\n\nwhile flag:\n    user_input = input(&quot;.input_text(\\&quot;&quot;)\n    if user_input in ESCAPE_KEYS:\n        flag = False\n        continue\n\n    message_obj = {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: user_input}\n    message_array.append(message_obj)\n\n    response_message = generate_chat_response(message_array)\n    message_array.append({&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: str(response_message)})\n\n    print(&quot;.print (&quot; +  str(response_message) + &quot;)&quot;)\n&#x27;</textarea>
+
+				<div>
+					<textarea name="message1" id=message1 class="taexpand input-text message user" >Ready to polish?</textarea>
+					 <script> {
+						const textarea = document.getElementById('message1');
+						//console.log("textarea: ", textarea);
+						//console.log("textarea: ", textarea.value);
+						const content = textarea.value;
+						//console.log("content: ", content);
+						textarea.value = decodeAssistantContent(content);
+					  } </script>
+
+					<span class="deletespan" onClick="delete_row(this)">Delete</span></textarea>
+				</div>
+				
+				<div>
+					<textarea name="message2" id=message2 class="taexpand input-text message user" >Yes. From now on I will only attempt to reply with the polished text and nothing else.</textarea>
+					 <script> {
+						const textarea = document.getElementById('message2');
+						//console.log("textarea: ", textarea);
+						//console.log("textarea: ", textarea.value);
+						const content = textarea.value;
+						//console.log("content: ", content);
+						textarea.value = decodeAssistantContent(content);
+					  } </script>
+
+					<span class="deletespan" onClick="delete_row(this)">Delete</span>
+				</div>
+				
+				<div>
+					<textarea name="message3" id=message3 class="taexpand input-text message user" ></textarea>
+					 <script> {
+						const textarea = document.getElementById('message3');
+						//console.log("textarea: ", textarea);
+						//console.log("textarea: ", textarea.value);
+						const content = textarea.value;
+						//console.log("content: ", content);
+						textarea.value = decodeAssistantContent(content);
+					  } </script>
+
+					<span class="deletespan" onClick="delete_row(this)">Delete</span>
+				</div>
+				
+				<div>
+					<textarea name="message4" id=message4 class="taexpand input-text message assistant" ></textarea>
+					 <script> {
+						const textarea = document.getElementById('message4');
+						//console.log("textarea: ", textarea);;w
+            
+						//console.log("textarea: ", textarea.value);
+						const content = textarea.value;
+						//console.log("content: ", content);
+						textarea.value = decodeAssistantContent(content);
+					  } </script>
+
+					<span class="deletespan" onClick="delete_row(this)">Delete</span>
+				</div>
+				
+
+				<textarea name="user_input" class="taexpand input-text" placeholder="Type your message here..." ></textarea>
+				<button type="submit" class="input-submit">Send</button>
+
+				<div class="model-select">
+  					<label for="model-select">Select a fine-tuned model:</label>
+  					<select name="modelids" id="model-select">
+						<option value="none" selected disabled>gpt-3.5-turbo</option>
+    						
+      							<option value="curie:ft-personal-2023-03-09-02-10-36">curie:ft-personal-2023-03-09-02-10-36</option>
+    						
+      							<option value="davinci:ft-personal-2023-03-09-04-03-28">davinci:ft-personal-2023-03-09-04-03-28</option>
+    						
+  					</select>
+				</div>
+			</div>  
+  </form>
+</div>
+
+<div class="sidebar bottom">
+  <img alt="Add-on logo" class="logo" src="https://www.gstatic.com/images/branding/product/1x/translate_48dp.png" width="27" height="27">
+  <span class="gray branding-text">Benji is brought to you by The Great Library</span>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+  /**
+   * On document load, assign click handlers to each button and try to load the
+   * user's origin and destination language preferences if previously set.
+   */
+  $(function() {
+    $('#run-translation').click(runTranslation);
+    $('#insert-text').click(insertText);
+    $('#organize').click(_do_post);
+    google.script.run.withSuccessHandler(loadPreferences)
+            .withFailureHandler(showError).getPreferences();
+    console.log("Loading...", $('#organize'))
+    console.log(doPost);
+  });
+  
+   function test() {
+    console.log("In test.");
+    doPost();
+  }
+
+  function _do_post() {
+    console.log("In _do_post.");
+    doPost();
+  }
+
+  /**
+   * Callback function that populates the origin and destination selection
+   * boxes with user preferences from the server.
+   *
+   * @param {Object} languagePrefs The saved origin and destination languages.
+   */
+  function loadPreferences(languagePrefs) {
+    $('input:radio[name="origin"]')
+            .filter('[value=' + languagePrefs.originLang + ']')
+            .attr('checked', true);
+    $('input:radio[name="dest"]')
+            .filter('[value=' + languagePrefs.destLang + ']')
+            .attr('checked', true);
+    //$('input:text[name="signature']).text = languagePrefs.authorSig;
+  }
+
+  function doPost() {
+
+    const signature = $('#text-author-sig').val();
+    const origin = $('input[name=origin]:checked').val();
+    const dest = $('input[name=dest]:checked').val();
+    const savePrefs = $('#save-prefs').is(':checked');
+
+    const user_input = $('#user_input').val();
+    const context = $('#context').val();
+    const chatid_input = $('#chatid_input').val();
+    const sdkid_input = $('#sdkid_input').val();
+    const modelid = $('#modelid').val();
+
+    const message1 = $('#message1').val();
+    const message2 = $('#message2').val();
+
+    console.log("message2: ", message2);
+    
+    google.script.run
+            .withSuccessHandler(
+                    function(doPostGsResult, element) {
+                      $('#translated-text').val(doPostGsResult.content);
+                      element.disabled = false;
+                    })
+            .withFailureHandler(
+                    function(msg, element) {
+                      showError(msg, $('#button-bar'));
+                      element.disabled = false;
+                    })
+            .withUserObject(this)
+            //.getTextAndTranslation(signature, origin, dest, savePrefs);
+            .doPostGs(user_input, context, chatid_input, sdkid_input, modelid, message1, message2);
+  } 
+  /**
+   * Runs a server-side function to translate the user-selected text and update
+   * the sidebar UI with the resulting translation.
+   */
+  function runTranslation() {
+    this.disabled = true;
+    $('#error').remove();
+    const signature = $('#text-author-sig').val();
+    const origin = $('input[name=origin]:checked').val();
+    const dest = $('input[name=dest]:checked').val();
+    const savePrefs = $('#save-prefs').is(':checked');
+    google.script.run
+            .withSuccessHandler(
+                    function(textAndTranslation, element) {
+                      $('#translated-text').val(textAndTranslation.translation);
+                      element.disabled = false;
+                    })
+            .withFailureHandler(
+                    function(msg, element) {
+                      showError(msg, $('#button-bar'));
+                      element.disabled = false;
+                    })
+            .withUserObject(this)
+            .getTextAndTranslation(signature, origin, dest, savePrefs);
+  }
+
+  /**
+   * Runs a server-side function to insert the translated text into the document
+   * at the user's cursor or selection.
+   */
+  function insertText() {
+    this.disabled = true;
+    $('#error').remove();
+    google.script.run
+            .withSuccessHandler(
+                    function(returnSuccess, element) {
+                      element.disabled = false;
+                    })
+            .withFailureHandler(
+                    function(msg, element) {
+                      showError(msg, $('#button-bar'));
+                      element.disabled = false;
+                    })
+            .withUserObject(this)
+            .insertText($('#translated-text').val());
+  }
+
+  /**
+   * Inserts a div that contains an error message after a given element.
+   *
+   * @param {string} msg The error message to display.
+   * @param {DOMElement} element The element after which to display the error.
+   */
+  function showError(msg, element) {
+    const div = $('<div id="error" class="error">' + msg + '</div>');
+    $(element).after(div);
+  }
+</script>
+</body>
+</html>
+<!-- [END BENJI] -->
