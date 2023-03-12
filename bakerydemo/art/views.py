@@ -1391,7 +1391,28 @@ def testhtml(request):
     book.set_language('en')
     book.add_author('Lewis Carroll')
     c = epub.EpubHtml(title='Chapter 1', file_name='chap_01.xhtml', lang='en')
-    c.content=u'<html><head></head><body><h1>Chapter 1</h1><p>Down the Rabbit-Hole</p></body></html>'
+
+    c.content=u"""
+<html><head>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <script>
+    function doit(e) {
+        console.log(e);
+
+        const domContainer = document.querySelector('#like_button_container');
+        const root = ReactDOM.createRoot(domContainer);
+        root.render(e(LikeButton));
+    }
+  </script>
+
+</head>
+<body>
+  <h1 onlick="doit(this)" id="like_button_container">Chapter 1</h1><p>Down the Rabbit-Hole</p>
+</body></html>
+"""
+
     book.add_item(c)
     book.spine = ['nav', c, 'name', 'This is the name of the book']
     epub.write_epub('alice.epub', book, {})
@@ -1400,18 +1421,37 @@ def testhtml(request):
     response = HttpResponse(c.content, content_type='text/html')
     return response
     
+@api_view(['GET', ])
+def testscript(request):
+    script = ""
+    script += open("/home/john/bakerydemo/bakerydemo/art/react.development.js").read() + "\n"
+    script += open("/home/john/bakerydemo/bakerydemo/art/react-dom.development.js").read() + "\n"
+    script += open("/home/john/bakerydemo/bakerydemo/art/embed.js").read() + "\n"
 
+    script += "\nconsole.log('Script loaded.');"
+
+    return HttpResponse(script, content_type='text/html')
 
 @api_view(['GET', ])
 def testalice(request):
-    #myepub = epub.read_epub('alice.epub')
 
     book = epub.EpubBook()
     book.set_title('Alice in Wonderland')
     book.set_language('en')
     book.add_author('Lewis Carroll')
     c = epub.EpubHtml(title='Chapter 1', file_name='chap_01.xhtml', lang='en')
-    c.content=u'<html><head></head><body><h1>Chapter 1</h1><p>Down the Rabbit-Hole</p></body></html>'
+    #c.content=u'<html><head></head><body><h1>Chapter 1</h1><p>Down the Rabbit-Hole</p></body></html>'
+
+    # All the scripting has to go into art/testscript/
+    c.content=u"""
+<div>
+
+  <div id="like_button_container_div"></div>
+  <h1 onclick="doit1(this)" id="like_button_container">Chapter 1</h1><p>Down the Rabbit-Hole</p>
+
+</div>
+"""
+
     book.add_item(c)
     book.spine = ['nav', c, 'name', 'This is the name of the book']
     epub.write_epub('alice.epub', book, {})
@@ -1427,36 +1467,12 @@ def testalice(request):
     f = open("EPUB/chap_01.xhtml")
     html_content = f.read()
 
-    return HttpResponse(html_content, content_type='text/html')
-
-    #file_name = 'alice.zip'
-
-    #with ZipFile(file_name, 'r') as zip:
-        # printing all the contents of the zip file
-        #zip.printdir()
-  
-    # extracting all the files
-    #print('Extracting all the files now...')
-    #zip.extractall()
-    #print('Done!')
-
-    #print(myepub)
-
+    #return HttpResponse(html_content, content_type='text/html')
+    return HttpResponse(c.content, content_type='text/html')
 
 
 @api_view(['GET', ])
 def testepub(request):
-    ## Returns alice and wonderland as test 
-
-    #book = epub.EpubBook()
-    #book.set_title('Alice in Wonderland')
-    #book.set_language('en')
-    #book.add_author('Lewis Carroll')
-    #c = epub.EpubHtml(title='Chapter 1', file_name='chap_01.xhtml', lang='en')
-    #c.content=u'<html><head></head><body><h1>Chapter 1</h1><p>Down the Rabbit-Hole</p></body></html>'
-    #book.add_item(c)
-    #book.spine = ['nav', c]
-    #epub.write_epub('alice.epub', book, {})
 
     myepub = epub.read_epub('/home/john/alice.epub')
     print(myepub)
