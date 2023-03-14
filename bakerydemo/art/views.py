@@ -1170,6 +1170,22 @@ def messages_to_completion(message_array):
     return completion
 
 
+def write_to_replace_file(start_text, replace_text):
+    #with jsonlines.open('/home/john/bakerydemo/chatGPT/chat_logs.jsonl', mode='a') as writer::0
+
+    replaceid = ''.join(random.choices(string.ascii_lowercase, k=20))
+
+    with open('/home/john/bakerydemo/chatGPT/replace-' + replaceid + '.pickle', 'wb') as f:
+        pickle.dump(start_text, f)
+        pickle.dump(replace_text, f)
+
+    filename = replaceid + '.jsonl'
+    with jsonlines.open('/home/john/bakerydemo/chatGPT/training-' + filename, mode='w') as writer:
+        writer.write({'prompt': "Please polishing the following text for publication: " + start_text,
+                'completion': replace_text})
+    return replaceid
+
+
 def write_to_log_file(message_array, response_message, context, threadid, modelid):
     #with jsonlines.open('/home/john/bakerydemo/chatGPT/chat_logs.jsonl', mode='a') as writer::0
 
@@ -1225,6 +1241,32 @@ def load_chat(request):
         print("modelid: " + modelid)
         return render(request, 'art/chat.html', {'modelids': getModelIds(), 'modelid': modelid})
 
+
+@api_view(['POST', ])
+def savereplacement(request):
+    if request.method == 'POST':
+        print(request.META['CONTENT_TYPE'])
+        body_unicode = str(request.body.decode('utf-8'))
+
+        start_text = ""
+        replace_text = ""
+        if request.META['CONTENT_TYPE'] in ["multipart/form-data"]:
+            components = parse_qs(body_unicode)
+            print(components)
+            if "start_text" in components.keys():
+                start_text = components["start_text"][0];
+                print(start_text)
+
+
+            if "replace_text" in components.keys():
+                replace_text = components["replace_text"][0];
+        else:
+            error
+
+        write_to_replace_file(start_text, replace_text)
+
+        json_obj = {"content" : "Saved"}
+        return JsonResponse(json_obj, safe=False)
 
 
 @api_view(['POST', ])
@@ -1524,5 +1566,6 @@ def testepub(request):
     response = HttpResponse(epub_content, content_type='application/epub+zip')
     response['Content-Disposition'] = 'inline; filename="alice.epub"'
     return response
+
 
 

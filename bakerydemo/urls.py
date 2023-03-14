@@ -35,6 +35,7 @@ urlpatterns = [
 
     path('search/', search_views.search, name='search'),
 
+    url('^art/savereplacement/', csrf_exempt(art_views.savereplacement), name='savereplacement'),
     url('^art/testscript/', csrf_exempt(art_views.testscript), name='testscript'),
     url('^art/testalice/', csrf_exempt(art_views.testalice), name='testalice'),
     url('^art/testhtml/', csrf_exempt(art_views.testhtml), name='testhtml'),
