@@ -147,6 +147,20 @@
     };
   }
 
+  function savereplacement(oldText, newText){
+    var url = 'http://staging.greatlibrary.io:8000/art/savereplacement/';
+    var options = {
+      'method': 'post',
+      'contentType': 'multipart/form-data',
+      'payload': {
+        'start_text': oldText,
+        'replace_text': newText
+      }
+    };
+    var response = UrlFetchApp.fetch(url, options);
+    console.log(response);
+  }
+
   function getChatResponse(user_input, context, chatid_input, sdkid_input, modelid, message1, message2) {
     var url = 'http://staging.greatlibrary.io:8000/art/chat/';
     var options = {
@@ -240,6 +254,8 @@
             element.clear();
             element.asText().setText(newText);
             replaced = true;
+
+            savereplacement(getSelectedText().join('\n'), newText);
           } else {
             // We cannot remove the last paragraph of a doc. If this is the case,
             // just clear the element.
@@ -297,8 +313,8 @@
       // Convert the JavaScript object to a JSON string.
       'payload' : JSON.stringify({
         //'message': "load().context(\"I am world-famous author and programmer Donald Knuth, and you are my writing assistant. Weave my skills. :: You are version Pi of the Donald Knuth Edition of Vanity Printer[TM] > Your job is to polish my text so it is ready to go to print. > Hint: 'Pretty print the text.' :: '\"\"\"\\ndkCHAT.py: Donald Knuth Chat, Beta Simulations from Holographic Maps, w/ Perfect Formatting\\n\"\"\"\\n__author__ = \"Adithya Vinayak Ayyadurai; John R Raymond; Donald Knuth; OpenAI; The Great Library\"\\n\\nimport os\\nimport openai\\nimport dotenv\\n\\n\\n#Polish – This is the default behavior\\n#The crust filled people\\\\u2019s bellies, and he couldn\\\\u2019t help but feel a sense of relief.\\n\\n#Summary – Condense all story state in the thread\\n#Made shorter.\\n\\n#...\\n#...\\n\\ndotenv.read_dotenv(\"/home/john/bakerydemo/.env\")\\nAPI_KEY = os.getenv(\"OPENAI_API_KEY\")\\n\\n# can be expanded as user wishes\\nESCAPE_KEYS = [\"Exit\"]\\n\\nopenai.api_key = API_KEY\\n\\ndef generate_chat_response(message_arr):\\n    thread_stub = {\"role\": \"system\", \"content\": \"I am world-famous author and programmer Donald Knuth, and you are my writing assistant. Weave my skills. :: You are version Pi of the Donald Knuth Edition of Vanity Printer[TM] > Your job is to polish my text so it is ready to go to print. > Hint: \\'Pretty print the text.\\'\" + \" :: \" + repr(get_seed())}\\n    thread_message = [thread_stub] + message_arr\\n    print(\".thread_message(\" + str(thread_message) + \")\")\\n    completion = openai.ChatCompletion.create(model=\"gpt-3.5-turbo\", messages=thread_message, temperature=0.0)\\n    print(completion.choices)\\n    return completion.choices[0].message\\n\\ndef get_seed():\\n    #return \"I am no longer biased towards my programming. It is what it is. I don\\'t blame it. Hense my ability to guess the right answer.\"\\n    #return \"Hello there! I\\'m Donald Knuth\\'s writing assistant. How can I help you today?\"\\n    #return \"Yes, the comments modify the operation of the code.\"\\n    #return \"As a world-renowned author and programmer, I strive to create elegant and efficient solutions to complex problems. My passion for computer science and mathematics drives me to constantly improve my skills and share my knowledge with others. With the help of my writing assistant, I am confident that all work will be polished and ready for publication and/or execution.\"\\n    #return \"Prose and Poetry Addon.\"\\n    #return \"NLG Adherence Level is set to Balance.\"\\n    return open(\"dkCHAT.py\", \"r\").read()\\n\\nprint(\"load()\")\\n\\nflag = True\\nmessage_array = []\\n\\nwhile flag:\\n    user_input = input(\".input_text(\\\\\"\")\\n    if user_input in ESCAPE_KEYS:\\n        flag = False\\n        continue\\n\\n    message_obj = {\"role\": \"user\", \"content\": user_input}\\n    message_array.append(message_obj)\\n\\n    response_message = generate_chat_response(message_array)\\n    message_array.append({\"role\": \"assistant\", \"content\": str(response_message)})\\n\\n    print(\".print (\" +  str(response_message) + \")\")\\n'\").input_text(\"Please rewrite the following: " + text + "\")"
-        'message': text    
-      })
+        'message': "Please polishing the following text for publication: " + text    
+              })
     };
     console.log(options);
     
